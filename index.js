@@ -9,10 +9,12 @@ const submitButton = document.querySelector("#submit");
 
 /* ##### Warnings ##### */
 const nameWarning = document.querySelector("#name-warning");
-const usernameWarning = document.querySelector("#name-warning");
-const emailWarning = document.querySelector("#name-warning");
-const passwordWarning = document.querySelector("#name-warning");
-const passwordconfirmWarning = document.querySelector("#name-warning");
+const usernameWarning = document.querySelector("#username-warning");
+const emailWarning = document.querySelector("#email-warning");
+const passwordWarning = document.querySelector("#password-warning");
+const passwordconfirmWarning = document.querySelector("#passwordconfirm-warning");
+
+const accountCreationText = document.querySelector(".submit-succesful");
 
 /* ##### Acount ##### */
 const account = {
@@ -27,19 +29,14 @@ submitButton.addEventListener("click", function(event) {
 
     event.preventDefault();
 
-    GetInputValues();
+    UpdateInputValues();
 
-    if (account.name == "") {
-        nameWarning.classList.add("warning-text-visible");
-        nameWarning.classList.remove("warning-text-hidden");
-    }
-    else {
-        nameWarning.classList.add("warning-text-hidden");
-        nameWarning.classList.remove("warning-text-visible");
-    }
+    const valid = CheckAllInputValues();
+
+    if (valid) ShowAccountCreationText();
 })
 
-function GetInputValues () {
+function UpdateInputValues () {
     account.name = nameInput.value;
     account.username = usernameInput.value;
     account.email = emailInput.value;
@@ -48,12 +45,72 @@ function GetInputValues () {
     console.log(account);
 }
 
+function CheckAllInputValues() {
+    let valid = true;
+    if (!CheckInputValue("name")) valid = false;
+    if (!CheckInputValue("username")) valid = false;
+    if (!CheckInputValue("email")) valid = false;
+    if (!CheckInputValue("password")) valid = false;
+    if (!CheckInputValue("passwordconfirm")) valid = false;
+    return valid;
+}
+
 function CheckInputValue (inputField) {
-    let correct = true;
     switch(inputField){
         case "name":
+            if (account.name == "") {
+                ShowWarningText(nameWarning);
+                return false;
+            }
+            HideWarningText(nameWarning);
+            return true;
 
-            break;
+        case "username":
+            if (account.username == "") {
+                ShowWarningText(usernameWarning);
+                return false;
+            }
+            HideWarningText(usernameWarning);
+            return true;
+
+        case "email":
+            if (account.email == "" || !emailInput.checkValidity()) {
+                ShowWarningText(emailWarning);
+                return false;
+            }
+            HideWarningText(emailWarning);
+            return true;
+
+        case "password":
+            if (account.password.length < 8) {
+                ShowWarningText(passwordWarning);
+                return false;
+            }
+            HideWarningText(passwordWarning);
+            return true;
+
+        case "passwordconfirm":
+            if (account.passwordconfirm != account.password) {
+                ShowWarningText(passwordconfirmWarning);
+                return false;
+            }
+            HideWarningText(passwordconfirmWarning);
+            return true;
     }
-    return correct;
+    return true;
+}
+
+function ShowWarningText(warning) {
+    warning.classList.add("warning-text-visible");
+    warning.classList.remove("warning-text-hidden");
+}
+
+function HideWarningText(warning) {
+    warning.classList.add("warning-text-hidden");
+    warning.classList.remove("warning-text-visible");
+}
+
+function ShowAccountCreationText() {
+    accountCreationText.classList.add("warning-text-visible");
+    accountCreationText.classList.remove("warning-text-hidden");
 }

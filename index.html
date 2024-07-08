@@ -18,34 +18,42 @@
             <form class="form">
 
                 <label>
-                    Name
+                    Name:
                     <input type="text" id="name">
                 </label>
 
-                <p class="warning-text warning-text-hidden" id="name-warning">Please input a valid name</p>
+                <p class="warning-text warning-text-hidden" id="name-warning">Please input a valid name.</p>
                 
                 <label>
-                    Username
+                    Username:
                     <input type="text" id="username">
                 </label>
 
+                <p class="warning-text warning-text-hidden" id="username-warning">Please input a valid username.</p>
+
                 <label>
-                    Email
+                    Email:
                     <input type="email" id="email">
                 </label>
 
+                <p class="warning-text warning-text-hidden" id="email-warning">Please input a valid email.</p>
+
                 <label>
-                    Password
+                    Password:
                     <input type="password" id="password">
                 </label>
 
+                <p class="warning-text warning-text-hidden" id="password-warning">Please input a valid password. It must be at least 8 characters long.</p>
+
                 <label>
-                    Confirm password
+                    Confirm password:
                     <input type="password" id="passwordconfirm">
                 </label>
 
-                <p></p>
+                <p class="warning-text warning-text-hidden" id="passwordconfirm-warning">The passwords must match.</p>
+
                 <p class="warning-text warning-text-hidden" id="submit-warning">There is an issue with your account information. Please check again.</p>
+                <p class="submit-succesful warning-text-hidden">Success! Your account has been created.</p>
                 <button type="submit" id="submit">Create account</button>
 
             </form>

@@ -16,3 +16,17 @@
 .warning-text-visible {
     display: inline;
 }
+
+#submit-warning {
+    margin-top: 1rem;
+}
+
+#submit {
+    margin-top: 1rem;
+}
+
+.submit-succesful {
+    color: green;
+    margin: 0.5rem;
+    margin-left: 0;
+}
