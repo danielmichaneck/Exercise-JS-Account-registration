@@ -8,40 +8,39 @@
 </head>
 
 <body>
-    <header>
+    <div class="form-container">
 
-        <h1>Account registration</h1>
+        <h1 class="header">Account registration</h1>
 
-        <fieldset>
-
-            <legend>Create account</legend>
+        <fieldset">
+            <legend class="legend">Please fill in your information below.</legend>
             <form class="form">
 
-                <label id="name">
+                <label class="label" id="name">
                     Name:
                     <input type="text">
                     <p class="warning-text warning-text-hidden" id="name-warning">Please input a valid name.</p>
                 </label>
                 
-                <label id="username">
+                <label class="label" id="username">
                     Username:
                     <input type="text">
                     <p class="warning-text warning-text-hidden" id="username-warning">Please input a valid username.</p>
                 </label>
 
-                <label id="email">
+                <label class="label" id="email">
                     Email:
                     <input type="email">
                     <p class="warning-text warning-text-hidden" id="email-warning">Please input a valid email.</p>
                 </label>
 
-                <label id="password">
+                <label class="label" id="password">
                     Password:
                     <input type="password">
                     <p class="warning-text warning-text-hidden" id="password-warning">Please input a valid password. It must be at least 8 characters long.</p>
                 </label>
 
-                <label id="passwordconfirm">
+                <label class="label" id="passwordconfirm">
                     Confirm password:
                     <input type="password">
                     <p class="warning-text warning-text-hidden" id="passwordconfirm-warning">The passwords must match.</p>
@@ -49,13 +48,13 @@
 
                 <p class="warning-text warning-text-hidden" id="submit-warning">There is an issue with your account information. Please check again.</p>
                 <p class="submit-succesful warning-text-hidden">Success! Your account has been created.</p>
-                <button type="submit" id="submit">Create account</button>
+                <button type="submit" id="submit" disabled>Create account</button>
 
             </form>
 
         </fieldset>
 
-    </header>
+    </div>
 </body>
 
 <script src="index.js"></script>

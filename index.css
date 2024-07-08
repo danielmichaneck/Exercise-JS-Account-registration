@@ -1,6 +1,35 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 99, 90);
+    margin-top: 2rem;
+}
+
+.form-container {
+    background-color: rgb(248, 248, 248);
+}
+
+.legend {
+    padding-left: 1.5rem;
+}
+
 .form {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    width: 20rem;
+    padding: 1rem;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.header {
+    text-align: center;
 }
 
 .input-invalid {
