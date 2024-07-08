@@ -15,12 +15,14 @@
         <fieldset>
 
             <legend>Create account</legend>
-            <form>
+            <form class="form">
 
                 <label>
                     Name
                     <input type="text" id="name">
                 </label>
+
+                <p class="warning-text warning-text-hidden" id="name-warning">Please input a valid name</p>
                 
                 <label>
                     Username
@@ -42,6 +44,8 @@
                     <input type="password" id="passwordconfirm">
                 </label>
 
+                <p></p>
+                <p class="warning-text warning-text-hidden" id="submit-warning">There is an issue with your account information. Please check again.</p>
                 <button type="submit" id="submit">Create account</button>
 
             </form>

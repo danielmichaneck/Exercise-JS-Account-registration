@@ -1,0 +1,18 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.warning-text {
+    color: red;
+    margin: 0.5rem;
+    margin-left: 0;
+}
+
+.warning-text-hidden {
+    display: none;
+}
+
+.warning-text-visible {
+    display: inline;
+}
