@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+.input-invalid {
+    background-color: pink;
+}
+
 .warning-text {
     color: red;
     margin: 0.5rem;

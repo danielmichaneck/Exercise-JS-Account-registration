@@ -17,40 +17,35 @@
             <legend>Create account</legend>
             <form class="form">
 
-                <label>
+                <label id="name">
                     Name:
-                    <input type="text" id="name">
+                    <input type="text">
+                    <p class="warning-text warning-text-hidden" id="name-warning">Please input a valid name.</p>
                 </label>
-
-                <p class="warning-text warning-text-hidden" id="name-warning">Please input a valid name.</p>
                 
-                <label>
+                <label id="username">
                     Username:
-                    <input type="text" id="username">
+                    <input type="text">
+                    <p class="warning-text warning-text-hidden" id="username-warning">Please input a valid username.</p>
                 </label>
 
-                <p class="warning-text warning-text-hidden" id="username-warning">Please input a valid username.</p>
-
-                <label>
+                <label id="email">
                     Email:
-                    <input type="email" id="email">
+                    <input type="email">
+                    <p class="warning-text warning-text-hidden" id="email-warning">Please input a valid email.</p>
                 </label>
 
-                <p class="warning-text warning-text-hidden" id="email-warning">Please input a valid email.</p>
-
-                <label>
+                <label id="password">
                     Password:
-                    <input type="password" id="password">
+                    <input type="password">
+                    <p class="warning-text warning-text-hidden" id="password-warning">Please input a valid password. It must be at least 8 characters long.</p>
                 </label>
 
-                <p class="warning-text warning-text-hidden" id="password-warning">Please input a valid password. It must be at least 8 characters long.</p>
-
-                <label>
+                <label id="passwordconfirm">
                     Confirm password:
-                    <input type="password" id="passwordconfirm">
+                    <input type="password">
+                    <p class="warning-text warning-text-hidden" id="passwordconfirm-warning">The passwords must match.</p>
                 </label>
-
-                <p class="warning-text warning-text-hidden" id="passwordconfirm-warning">The passwords must match.</p>
 
                 <p class="warning-text warning-text-hidden" id="submit-warning">There is an issue with your account information. Please check again.</p>
                 <p class="submit-succesful warning-text-hidden">Success! Your account has been created.</p>

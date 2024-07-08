@@ -1,20 +1,35 @@
-/* ##### Inputs ##### */
-const nameInput = document.querySelector("#name");
-const usernameInput = document.querySelector("#username");
-const emailInput = document.querySelector("#email");
-const passwordInput = document.querySelector("#password");
-const passwordconfirmInput = document.querySelector("#passwordconfirm");
+/* ##### Form ##### */
+const form = document.querySelector(".form");
 
-const submitButton = document.querySelector("#submit");
+
+/* ##### Labels ##### */
+const nameLabel =            document.querySelector("#name");
+const usernameLabel =        document.querySelector("#username");
+const emailLabel =           document.querySelector("#email");
+const passwordLabel =        document.querySelector("#password");
+const passwordconfirmLabel = document.querySelector("#passwordconfirm");
+
+
+/* ##### Inputs ##### */
+const nameInput =            nameLabel.firstElementChild;
+const usernameInput =        usernameLabel.firstElementChild;
+const emailInput =           emailLabel.firstElementChild;
+const passwordInput =        passwordLabel.firstElementChild;
+const passwordconfirmInput = passwordconfirmLabel.firstElementChild;
+
 
 /* ##### Warnings ##### */
-const nameWarning = document.querySelector("#name-warning");
-const usernameWarning = document.querySelector("#username-warning");
-const emailWarning = document.querySelector("#email-warning");
-const passwordWarning = document.querySelector("#password-warning");
-const passwordconfirmWarning = document.querySelector("#passwordconfirm-warning");
+const nameWarning =            nameLabel.lastElementChild;
+const usernameWarning =        usernameLabel.lastElementChild;
+const emailWarning =           emailLabel.lastElementChild;
+const passwordWarning =        passwordLabel.lastElementChild;
+const passwordconfirmWarning = passwordconfirmLabel.lastElementChild;
 
+
+/* ##### Success button ##### */
+const submitButton = document.querySelector("#submit");
 const accountCreationText = document.querySelector(".submit-succesful");
+
 
 /* ##### Acount ##### */
 const account = {
@@ -25,7 +40,25 @@ const account = {
     passwordconfirm: passwordconfirmInput.innerText,
 }
 
-submitButton.addEventListener("click", function(event) {
+
+/* ##### registrationData ##### */
+const registrationData = {
+    name: "first name last name",
+    username: "username",
+    email: "email@email.com",
+    password: "password",
+}
+
+
+/* ##### Form ##### */
+form.addEventListener("change", (event) => {
+    UpdateInputValues();
+    CheckAllInputValues();
+})
+
+
+/* ##### Submit button ##### */
+submitButton.addEventListener("click", (event) => {
 
     event.preventDefault();
 
@@ -37,11 +70,11 @@ submitButton.addEventListener("click", function(event) {
 })
 
 function UpdateInputValues () {
-    account.name = nameInput.value;
-    account.username = usernameInput.value;
-    account.email = emailInput.value;
-    account.password = passwordInput.value;
-    account.passwordconfirm = passwordconfirmInput.value;
+    account.name = nameInput.value.trim();
+    account.username = usernameInput.value.trim();
+    account.email = emailInput.value.trim();
+    account.password = passwordInput.value.trim();
+    account.passwordconfirm = passwordconfirmInput.value.trim();
     console.log(account);
 }
 
@@ -58,54 +91,56 @@ function CheckAllInputValues() {
 function CheckInputValue (inputField) {
     switch(inputField){
         case "name":
-            if (account.name == "") {
-                ShowWarningText(nameWarning);
+            if (account.name.length === 0) {
+                ShowWarning(nameInput, nameWarning);
                 return false;
             }
-            HideWarningText(nameWarning);
+            HideWarning(nameInput, nameWarning);
             return true;
 
         case "username":
-            if (account.username == "") {
-                ShowWarningText(usernameWarning);
+            if (account.username.length === 0) {
+                ShowWarning(usernameInput, usernameWarning);
                 return false;
             }
-            HideWarningText(usernameWarning);
+            HideWarning(usernameInput, usernameWarning);
             return true;
 
         case "email":
-            if (account.email == "" || !emailInput.checkValidity()) {
-                ShowWarningText(emailWarning);
+            if (account.email.length === 0 || !emailInput.checkValidity()) {
+                ShowWarning(emailInput, emailWarning);
                 return false;
             }
-            HideWarningText(emailWarning);
+            HideWarning(emailInput, emailWarning);
             return true;
 
         case "password":
             if (account.password.length < 8) {
-                ShowWarningText(passwordWarning);
+                ShowWarning(passwordInput, passwordWarning);
                 return false;
             }
-            HideWarningText(passwordWarning);
+            HideWarning(passwordInput, passwordWarning);
             return true;
 
         case "passwordconfirm":
             if (account.passwordconfirm != account.password) {
-                ShowWarningText(passwordconfirmWarning);
+                ShowWarning(passwordconfirmInput, passwordconfirmWarning);
                 return false;
             }
-            HideWarningText(passwordconfirmWarning);
+            HideWarning(passwordconfirmInput, passwordconfirmWarning);
             return true;
     }
     return true;
 }
 
-function ShowWarningText(warning) {
+function ShowWarning(field, warning) {
+    field.classList.add("input-invalid");
     warning.classList.add("warning-text-visible");
     warning.classList.remove("warning-text-hidden");
 }
 
-function HideWarningText(warning) {
+function HideWarning(field, warning) {
+    field.classList.remove("input-invalid");
     warning.classList.add("warning-text-hidden");
     warning.classList.remove("warning-text-visible");
 }
