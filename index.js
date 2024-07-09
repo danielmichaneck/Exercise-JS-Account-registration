@@ -11,11 +11,11 @@ const passwordconfirmLabel = document.querySelector("#passwordconfirm");
 
 
 /* ##### Inputs ##### */
-const nameInput =            nameLabel.firstElementChild;
-const usernameInput =        usernameLabel.firstElementChild;
-const emailInput =           emailLabel.firstElementChild;
-const passwordInput =        passwordLabel.firstElementChild;
-const passwordconfirmInput = passwordconfirmLabel.firstElementChild;
+const nameInput =            nameLabel.children[1];
+const usernameInput =        usernameLabel.children[1];
+const emailInput =           emailLabel.children[1];
+const passwordInput =        passwordLabel.children[1];
+const passwordconfirmInput = passwordconfirmLabel.children[1];
 
 
 /* ##### Warnings ##### */
