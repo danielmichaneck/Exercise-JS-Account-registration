@@ -28,10 +28,10 @@ const passwordconfirmWarning = passwordconfirmLabel.lastElementChild;
 
 /* ##### Success button ##### */
 const submitButton = document.querySelector("#submit");
-const accountCreationText = document.querySelector(".submit-succesful");
+const accountCreationText = document.querySelector(".submit-successful");
 
 
-/* ##### Acount ##### */
+/* ##### Account ##### */
 const account = {
     name: nameInput.innerText,
     username: usernameInput.innerText,
@@ -52,17 +52,18 @@ const registrationData = {
 
 /* ##### Form update ##### */
 form.addEventListener("input", (event) => {
-    UpdateInputValues();
-    const valid = CheckAllInputValues(false);
+    updateInputValues();
+    const valid = checkAllInputValues(false);
     if (valid) submitButton.disabled = false;
     else submitButton.disabled = true;
+    hideAccountCreationText();
 })
 
 
 /* ##### Label update ##### */
 function updateLabel(label) {
-    UpdateInputValues();
-    CheckInputValue(label, true);
+    updateInputValues();
+    checkInputValue(label, true);
 }
 
 nameInput.addEventListener("input", () => updateLabel("name"));
@@ -76,92 +77,122 @@ passwordInput.addEventListener("input", () => updateLabel("password"));
 passwordconfirmInput.addEventListener("input", () => updateLabel("passwordconfirm"));
 
 
-/* ##### Submit button ##### */
-submitButton.addEventListener("submit", (event) => {
+/* ##### Submit form ##### */
+form.addEventListener("submit", (event) => {
     event.preventDefault();
-    UpdateInputValues();
-    const valid = CheckAllInputValues(true);
-    if (valid) ShowAccountCreationText();
+    updateInputValues();
+    const valid = checkAllInputValues(true);
+    if (valid) {
+        showAccountCreationText();
+        setRegistrationData();
+        console.log(registrationData);
+    }
     return false;
 })
 
-function UpdateInputValues () {
+
+function setRegistrationData() {
+    registrationData.name = account.name;
+    registrationData.username = account.username;
+    registrationData.email = account.email;
+    registrationData.password = account.password;
+}
+
+
+/* ##### Updates account values with field values ##### */
+function updateInputValues () {
     account.name =            nameInput.value.trim();
     account.username =        usernameInput.value.trim();
     account.email =           emailInput.value.trim();
     account.password =        passwordInput.value.trim();
     account.passwordconfirm = passwordconfirmInput.value.trim();
-    console.log(account);
 }
 
-function CheckAllInputValues(warn) {
+
+/* ##### Checks all fields ##### */
+function checkAllInputValues(warn) {
     let valid = true;
-    if (!CheckInputValue("name", warn))            valid = false;
-    if (!CheckInputValue("username", warn))        valid = false;
-    if (!CheckInputValue("email", warn))           valid = false;
-    if (!CheckInputValue("password", warn))        valid = false;
-    if (!CheckInputValue("passwordconfirm", warn)) valid = false;
+    if (!checkInputValue("name", warn))            valid = false;
+    if (!checkInputValue("username", warn))        valid = false;
+    if (!checkInputValue("email", warn))           valid = false;
+    if (!checkInputValue("password", warn))        valid = false;
+    if (!checkInputValue("passwordconfirm", warn)) valid = false;
     return valid;
 }
 
-function CheckInputValue (inputField, warn) {
+
+/* ##### Checks specific field ##### */
+function checkInputValue (inputField, warn) {
     switch(inputField){
         case "name":
             if (account.name.length === 0) {
-                if (warn) ShowWarning(nameInput, nameWarning);
+                if (warn) showWarning(nameInput, nameWarning);
                 return false;
             }
-            if (warn) HideWarning(nameInput, nameWarning);
+            if (warn) hideWarning(nameInput, nameWarning);
             return true;
 
         case "username":
             if (account.username.length === 0) {
-                if (warn) ShowWarning(usernameInput, usernameWarning);
+                if (warn) showWarning(usernameInput, usernameWarning);
                 return false;
             }
-            if (warn) HideWarning(usernameInput, usernameWarning);
+            if (warn) hideWarning(usernameInput, usernameWarning);
             return true;
 
         case "email":
             if (account.email.length === 0 || !emailInput.checkValidity()) {
-                if (warn) ShowWarning(emailInput, emailWarning);
+                if (warn) showWarning(emailInput, emailWarning);
                 return false;
             }
-            if (warn) HideWarning(emailInput, emailWarning);
+            if (warn) hideWarning(emailInput, emailWarning);
             return true;
 
         case "password":
             if (account.password.length < 8) {
-                if (warn) ShowWarning(passwordInput, passwordWarning);
+                if (warn) showWarning(passwordInput, passwordWarning);
                 return false;
             }
-            if (warn) HideWarning(passwordInput, passwordWarning);
+            if (warn) hideWarning(passwordInput, passwordWarning);
             return true;
 
         case "passwordconfirm":
             if (account.passwordconfirm != account.password) {
-                if (warn) ShowWarning(passwordconfirmInput, passwordconfirmWarning);
+                if (warn) showWarning(passwordconfirmInput, passwordconfirmWarning);
                 return false;
             }
-            if (warn) HideWarning(passwordconfirmInput, passwordconfirmWarning);
+            if (warn) hideWarning(passwordconfirmInput, passwordconfirmWarning);
             return true;
     }
     return true;
 }
 
-function ShowWarning(field, warning) {
+
+/* ##### Shows warning message and adjusts field background color ##### */
+function showWarning(field, warning) {
     field.classList.add("input-invalid");
     warning.classList.add("warning-text-visible");
     warning.classList.remove("warning-text-hidden");
 }
 
-function HideWarning(field, warning) {
+
+/* ##### Hides warning message and adjusts field background color ##### */
+function hideWarning(field, warning) {
     field.classList.remove("input-invalid");
     warning.classList.add("warning-text-hidden");
     warning.classList.remove("warning-text-visible");
 }
 
-function ShowAccountCreationText() {
+
+/* ##### Shows text for successfully creating an account ##### */
+function showAccountCreationText() {
     accountCreationText.classList.add("warning-text-visible");
     accountCreationText.classList.remove("warning-text-hidden");
+}
+
+
+/* ##### Hides text for successfully creating an account ##### */
+function hideAccountCreationText() {
+    accountCreationText.classList.remove("warning-text-visible");
+    accountCreationText.classList.add("warning-text-hidden");
 }
