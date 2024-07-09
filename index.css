@@ -1,42 +1,65 @@
+/* ##### Set font for all elements ##### */
 * {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-style: normal;
 }
 
+
+/* ##### Body ##### */
 body {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+
     background-image: url("/Background pattern.jpg");
 }
 
+
+/* ##### Container ##### */
 .form-container {
+    margin: 5vh;
+
     background-color: rgba(3, 13, 58, 0.5);
     border-radius: 1rem;
 }
 
-.legend {
-    padding-left: 1.5rem;
+
+/* ##### Header ##### */
+.header {
+    text-align: center;
+    font-weight: 400;
     color: rgb(220, 228, 235)
 }
 
+
+/* ##### Legend ##### */
+.legend {
+    padding-left: 2rem;
+    color: rgb(220, 228, 235)
+}
+
+
+/* ##### Form ##### */
 .form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+
     width: 20rem;
     padding: 1rem;
+
     color: rgb(220, 228, 235)
 }
 
+/* ##### Input field ##### */
 .label {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+
     padding: 0.5rem;
-    background-color: rgb(255, 255, 255, 0.5);
     margin: 0.5rem;
+
     background-color: rgb(45, 61, 136);
     border-radius: 0.5rem;
 }
@@ -46,21 +69,12 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.header {
-    text-align: center;
-    font-weight: 400;
-    color: rgb(220, 228, 235)
-}
-
-.input-invalid {
-    background-color: pink;
-}
-
 .warning-text {
-    color: #ff0000;
     font-weight: 400;
     margin: 0.5rem;
     margin-left: 0;
+
+    color: #ff0000;
 }
 
 .warning-text-hidden {
@@ -71,16 +85,29 @@ body {
     display: inline;
 }
 
+.input-invalid {
+    background-color: pink;
+}
+
+
+/* ##### Submit button ##### */
+#submit {
+    height: 2rem;
+    margin-top: 1rem;
+
+    background-color: rgb(220, 228, 235);
+    border-radius: 1rem;
+    
+    font-weight: 400;
+}
+
 #submit-warning {
     margin-top: 1rem;
 }
 
-#submit {
-    margin-top: 1rem;
-}
-
 .submit-succesful {
-    color: green;
     margin: 0.5rem;
     margin-left: 0;
+
+    color: green;
 }

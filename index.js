@@ -91,6 +91,7 @@ form.addEventListener("submit", (event) => {
 })
 
 
+/* ##### Set the registration data to the values in the account object ##### */
 function setRegistrationData() {
     registrationData.name = account.name;
     registrationData.username = account.username;
